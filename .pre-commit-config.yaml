@@ -1,9 +1,18 @@
 repos:
-  - repo: local
-    hooks:
-      - id: requirements
-        name: requirements
-        entry: bash -c 'pip3 freeze > requirements.txt; git add requirements.txt'
-        language: system
-        pass_filenames: false
-        stages: [post-merge, post-checkout, post-rewrite]
+- repo: local
+  hooks:
+  - id: create-requirements
+    name: Create requirements.txt
+    entry: bash -c 'pip3 freeze > requirements.txt'
+    language: system
+    pass_filenames: false
+    stages: [manual]
+
+- repo: local
+  hooks:
+  - id: update-requirements
+    name: Update requirements.txt
+    entry: bash -c 'pip3 freeze > requirements.txt; git add requirements.txt'
+    language: system
+    pass_filenames: false
+    stages: [post-merge, post-checkout, post-rewrite]
