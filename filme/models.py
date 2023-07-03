@@ -18,6 +18,8 @@ class Filme(models.Model):
     visualizacao = models.IntegerField(default=0)
     data_criacao = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.titulo
 
 # Criar a SubClasses Episodios
 
