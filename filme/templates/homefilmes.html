@@ -6,16 +6,18 @@ Homefilmes
 
 {% block content %}
 
-<div class="py-14">
+<div class="py-14 px-4">
     <h1>Lista de cursos disponíveis na nossa plataforma:</h1>
-
-    {% for filme in lista_filmes %}
-    <hr>
-        <p>{{ filme }}</p>
-        <p>{{ filme.descricao }}</p>
-        <img class="py-2 px-6" src="{{ filme.thumb.url }}" alt="Tipo de curso">
-    {% endfor %}
-
+    <div class="py-2">
+        {% for filme in lista_filmes %}
+        <hr>
+            <a href="{% url 'filme:filmedetalhe' filme.pk %}">
+                <p>{{ filme }}</p>
+            </a>
+            <p>{{ filme.descricao }}</p>
+            <img class="py-2 px-6" src="{{ filme.thumb.url }}" alt="Tipo de curso">
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
