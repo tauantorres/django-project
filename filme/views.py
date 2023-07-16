@@ -1,4 +1,5 @@
 #from django.shortcuts import render
+from typing import Any, Dict
 from .models import Filme
 from django.views.generic import TemplateView, ListView, DetailView
 
@@ -16,6 +17,15 @@ class FilmeDetalhe(DetailView):
     template_name = 'filmedetalhe.html'
     context_object_name = 'filme'
 
+    def get_context_data(self, **kwargs):
+
+        context = super(FilmeDetalhe, self).get_context_data(**kwargs)
+        
+        filmes_relacionados = Filme.objects.filter(categoria=self.get_object().categoria)
+        context['filmes_relacionados'] = filmes_relacionados
+
+        return context
+
 # Create your views here.
 #def homepage(request: object) -> object:
 #    return render(request, 'homepage.html')
@@ -24,3 +34,4 @@ class FilmeDetalhe(DetailView):
 #     lista_filmes = Filme.objects.all()
 #     context['lista_filmes'] = lista_filmes
 #     return render(request, 'homefilmes.html', context)
+ 

@@ -8,23 +8,35 @@ Homefilmes
 
 <div class="py-16 px-4">
 
-    <div class="py-2">
+    <div class="py-10">
         <h1>Detalhes do curso: {{ filme.titulo }}</h1>
         <hr>
-        <p>{{ filme }}</p>
-        <p>{{ filme.descricao }}</p>
-        <img class="py-2 px-6" src="{{ filme.thumb.url }}" alt="{{filme}}">
+        <p>Descrição: {{ filme.descricao }}</p>
+        <img class="py-8 px-6" src="{{ filme.thumb.url }}" alt="{{filme}}">
 
+        <hr>
         <h2>Lista de episódios:</h2><br>
         {% for episodio in filme.episodios.all %}
-
         <p>
             Episódio {{ forloop.counter }} : 
             <a href="{{ episodio.video }}" target="_blank" rel="external">
                 {{ episodio.titulo }}
             </a>
         </p>
-        
+        {% endfor %}
+    </div>
+
+    <hr>
+    <div class="py-4">
+        <h2>Filmes relacionados: </h2><br>
+
+        {% for filme in filmes_relacionados %}
+        <p>
+            Curso {{ forloop.counter }}:
+            <a href="{% url 'filme:filmedetalhe' filme.pk %}">
+                {{ filme.titulo }}
+            </a>
+        </p>
         {% endfor %}
     </div>
 
