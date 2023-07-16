@@ -9,9 +9,10 @@ Homefilmes
 <div class="py-16 px-4">
 
     <div class="py-10">
-        <h1>Detalhes do curso: {{ filme.titulo }}</h1>
+        <h1>Curso: {{ filme.titulo }}</h1>
         <hr>
         <p>Descrição: {{ filme.descricao }}</p>
+        <p>Visualizações: {{ filme.visualizacao }}</p>
         <img class="py-8 px-6" src="{{ filme.thumb.url }}" alt="{{filme}}">
 
         <hr>

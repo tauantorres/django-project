@@ -20,4 +20,19 @@ Homefilmes
     </div>
 </div>
 
+<hr>
+<div class="py-10">
+    <h2>Novos cursos:</h2>
+    {% for recente in lista_filmes_recentes %}
+        <p>{{ recente }}</p>
+    {% endfor %}
+    {{ lista_filmes_recentes }}
+</div>
+
+<hr>
+<div class="py-10">
+    <h2>Cursos em alta:</h2>
+    {{ lista_filmes_em_alta }}
+</div>
+
 {% endblock %}
